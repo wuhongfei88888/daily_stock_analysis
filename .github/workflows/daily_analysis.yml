@@ -1,26 +1,26 @@
-name: 每日股票分析
+name: 每日股票分析名称: 每日股票分析
 
-on:
+on:启用启用启用:启用启用:启用:启用:启用:
   # 定时触发 - 每天北京时间 18:00 (UTC 10:00)
-  schedule:
-    - cron: '0 10 * * 1-5'     # 周一到周五，UTC 10:00 = 北京时间 18:00
+  schedule:计划计划：计划计划:计划计划：计划:schedule:计划计划：计划计划：计划计划：计划:
+    - cron: '0 13 * * 1-5'     # 周一到周五，UTC 10:00 = 北京时间 18:00
   
   # 手动触发
-  workflow_dispatch:
-    inputs:
-      mode:
-        description: '运行模式'
-        required: true
+  workflow_dispatch:工作流调度:
+    inputs:输入:
+      mode:模式模式:模式模式:模式模式:模式模式:模式:模式:模式:模式:
+        description: '运行模式'描述: 运行模式
+        required: true必填: 真必填: 真必填: true必填: 必填: 必填: 真
         default: 'full'
         type: choice
         options:
           - full          # 完整分析（股票+大盘）
-          - market-only   # 仅大盘复盘
-          - stocks-only   # 仅股票分析
+          - market-only   # 仅大盘复盘          - 仅大盘复盘# 仅大盘复盘
+          - stocks-only   # 仅股票分析          - 仅股票分析# 仅股票分析
 
 # 并发控制：同一时间只运行一个分析任务
-concurrency:
-  group: stock-analysis
+concurrency:并发:
+  group: stock-analysis分组: 股票分析
   cancel-in-progress: false
 
 jobs:
